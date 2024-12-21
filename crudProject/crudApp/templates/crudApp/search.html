@@ -1,0 +1,57 @@
+{% extends "crudApp/base.html" %}
+{% block title %}
+  Search
+{% endblock title %}
+{% block content %}
+{% if messages %}
+ {% for message in messages  %}
+ <div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+ {% endfor %}
+  
+{% endif %}
+<h1 class="text-center alert alert-success">Crud Project</h1>
+<div class="container">
+    <div class="row">
+        
+        <div class="col-10">
+          <h1 class="text-center alert alert-success">Show Student Information</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">S.N</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Edit</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in finds  %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phone_number}}</td>
+                <td>
+                  <a href="{% url 'edit' i.id %}"><button type="button" class="btn btn-outline-success btn-sm">Edit</button></a>
+                  <a href="{% url 'delete_data' i.id %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
+
+                </td>
+              </tr>
+              {% endfor %}
+              
+              
+        
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+<!-- <h1>This is Home page.</h1> -->
+{% endblock content %}

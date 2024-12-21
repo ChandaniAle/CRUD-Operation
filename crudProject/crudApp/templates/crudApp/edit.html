@@ -1,0 +1,56 @@
+{% extends "crudApp/base.html" %}
+{% block title %}
+  Edit
+{% endblock title %}
+{% block content %}
+{% if messages %}
+{% for message in messages  %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+           {{message}}
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+  {% endfor %}
+  
+{% endif %}
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+        <h1 class="text-center alert alert-danger">Upadte Students Information </h1>
+        <form method="POST" action="{% url 'edit' data.id %}">
+          {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{data.name}}">
+              
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Age</label>
+                <input type="number" name="age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{data.age}}">
+              
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email"  name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{data.email}}">
+              
+              </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+              <input type="number" name="Phone_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{data.Phone_number}}">
+            
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1" >
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Upadte</button>
+          </form>
+ 
+
+
+
+
+    </div>
+    </div>
+  </div>
+{% endblock content %}
